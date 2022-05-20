@@ -11,7 +11,7 @@ class Mysqlo {
     function __construct(array $data) { // Конструктор класса
         try {
             $this->connect = new PDO(
-                "mysql:dbname={$data['dbnm']};host={$data['addr']};charset=utf8;" ,
+                "mysql:dbname={$data['name']};host={$data['host']};charset=utf8;" ,
                 $data['user'],
                 $data['pass']
             ); // Создание подключения
