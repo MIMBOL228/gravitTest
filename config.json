@@ -1,0 +1,8 @@
+{
+    "db":{
+        "host":"localhost",
+        "user":"gravit",
+        "pass":"gravit",
+        "name":"gravit"
+    }
+}
