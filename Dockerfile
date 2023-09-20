@@ -2,9 +2,9 @@ FROM node:18-alpine as builder
 WORKDIR /builder
 
 COPY package.json package-lock.json tsconfig.json ./
+RUN npm ci
 COPY src  ./src
-
-RUN npm ci && npm run build
+RUN npm run build
 
 FROM node:18-alpine
 WORKDIR /app

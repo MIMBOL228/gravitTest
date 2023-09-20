@@ -1,10 +1,21 @@
+import "reflect-metadata"
+import 'dotenv/config'
 import express from 'express';
+import {Document} from "./entities/Document.js";
+import {AppDataSource} from "./data-source.js";
+
 const app = express();
 
 app.get('/', (req, res) => {
-    res.send('hello world');
+    AppDataSource.manager.find(Document).then(result => res.send(result));
 });
 
-app.listen(8080, function() {
-    console.log('running');
-});
+AppDataSource.initialize()
+    .then(() => {
+        app.listen(8080, function() {
+            console.log('running');
+        });
+    })
+    .catch((error) => console.log(error))
+
+

@@ -19,6 +19,9 @@
     "strictNullChecks": true,
     "outDir": "./build",
     "baseUrl": ".",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
     "paths": {
       "@server/*": ["src/*"],
       "@tests/*": ["__tests__/*"],
