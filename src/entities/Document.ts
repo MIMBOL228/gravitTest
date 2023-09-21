@@ -14,6 +14,4 @@ export class Document extends BaseEntity{
     @Column()
     deleteTokenHash: string
 
-    @Column() // Решил пока не использовать inet
-    ip: string
 }

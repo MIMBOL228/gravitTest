@@ -6,12 +6,12 @@ export const rawDelete = async (req, res) => {
     const rawUUID = req.params.uuid;
     const deleteToken = req.headers.authorization.split(" ");
 
-    if (deleteToken.length < 2) return res.send(400, { error:"Delete token is not defined" })
+    if (deleteToken.length < 2) return res.status(400).send({ error:"Delete token is not defined" })
 
     try {
         const document = await Document.findOneBy({uuid: rawUUID});
 
-        if (document === null) return res.send(404, { error:"Unknown UUID" })
+        if (document === null) return res.status(404).send({ error:"Unknown UUID" })
 
         const deleteTokenCompare = await bcrypt.compare(deleteToken[1], document.deleteTokenHash)
         if (deleteTokenCompare || deleteToken[1] === process.env.ADMIN_SECRET){
@@ -19,8 +19,8 @@ export const rawDelete = async (req, res) => {
             res.send(201,"")
         }
 
-        res.send(401, { error:"Invalid token" })
+        res.status(401).send({ error:"Invalid token" })
     }catch (e) {
-        return res.send(404, { error:"Unknown UUID" })
+        return res.status(404).send({ error:"Unknown UUID" })
     }
 }
