@@ -9,7 +9,7 @@ import bodyParser from "body-parser";
 
 const app = express();
 
-app.use(bodyParser.text({type:"*/*"}));
+app.use(bodyParser.text({type:"text/plain"}));
 
 app.post("/new/", newPost);
 app.get("/raw/:uuid/", rawGet);
