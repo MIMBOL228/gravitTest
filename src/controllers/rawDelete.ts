@@ -13,9 +13,8 @@ export const rawDelete = async (req, res) => {
 
         if (document === null) return res.send(404, { error:"Unknown UUID" })
 
-        console.log(deleteToken[1], document.deleteTokenHash)
         const deleteTokenCompare = await bcrypt.compare(deleteToken[1], document.deleteTokenHash)
-        if (deleteTokenCompare || deleteToken[0] === process.env.ADMIN_SECRET){
+        if (deleteTokenCompare || deleteToken[1] === process.env.ADMIN_SECRET){
             await document.remove();
             res.send(201,"")
         }
