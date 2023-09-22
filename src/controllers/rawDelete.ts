@@ -16,7 +16,7 @@ export const rawDelete = async (req, res) => {
         const deleteTokenCompare = await bcrypt.compare(deleteToken[1], document.deleteTokenHash)
         if (deleteTokenCompare || deleteToken[1] === process.env.ADMIN_SECRET){
             await document.remove();
-            res.send(201,"")
+            return res.send(201,"")
         }
 
         res.status(401).send({ error:"Invalid token" })
