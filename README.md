@@ -1,4 +1,9 @@
 # Backend, Web, JS
+### Запуск:
+```shell
+docker-compose up --build
+```
+### Тех. задание:
 
 Написать бекенд сервиса hastebin с следующим функционалом:
 
